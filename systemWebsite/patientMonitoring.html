@@ -1,0 +1,178 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href = "css/bootstrap.min.css" rel = "stylesheet">
+<link href = "js/bootstrap.min.js" rel = "stylesheet">
+<link href = "fontawesome/css/all.min.css" rel = "stylesheet">
+<link href = "patientMonitoring.css" rel = "stylesheet">
+<script type = "text/javascript" src = "patientMonitoring.js">
+</script>
+</head>
+
+<body class = "bg-light" onload = "return onloadFunctions()">
+
+<div class ="container-fluid text-white" id = "navbar">
+<label class = "col-sm-12 text-center" ><img src = "C:/Users/RUBERN/Pictures/muhimbili logo.png"></img><a href = "SystemInformation.html"> Mnazi Mmoja Hospital Patient Monitoring</a></label>
+</div>
+
+<div class = "sm-col-12 text-center" id = "patientaheader">
+<label id = "patienta">
+Patient A
+</label>
+</div>
+
+<div class = "row col-sm-12 text-center" id = "patientadiv">
+<div class = "col-sm-6 text-white container-fluid text-center" >
+<header>
+BODY TEMPERATURE
+</header>
+
+<iframe class = "" id = "tempchart" src = "">
+</iframe>
+<footer>
+<form onsubmit = "return formValidator1()">
+TEMPERATURE VALUES FROM <input type = "text" id = "tempstartdate"></input> TO <input type = "text" id = "tempenddate"></input>
+<button type = "submit" onclick = "return loadNewTempChart()">CHANGE PERIOD</button>
+</form>
+</footer>
+<div class = "row text-center">
+<div class = "col-sm-6">
+<label class = " text-white text-center" id = "temphead">
+Current Body Temperature
+</label>
+</div>
+<div class = "col-sm-2">
+<label class = "text-center" id = "thermlabel">
+<i class = "fa fa-thermometer-half" style = "color:black;font-size:60px;" ></i>
+</label>
+</div>
+<div class = "col-sm-4">
+<label class = "text-center" id = "tempbar">
+
+</label><br>
+</div>
+
+</div>
+</div>
+
+<div class = "col-sm-6 text-white container-fluid text-center">
+<header>
+BPM
+</header>
+
+<iframe class = "" src = "" id = "BPMchart">
+</iframe>
+<footer>
+<form onsubmit = "return formValidator2()">
+BPM VALUES FROM <input type = "text" id = "BPMstartdate"></input> TO <input type = "text" id = "BPMenddate"></input>
+<button type = "submit" onclick = "return loadNewBPMChart()">CHANGE PERIOD</button>
+</form>
+</footer>
+<div class  = "row text-center" id = "currentstatusdiv" >
+<div class = "col-sm-6">
+<label class = "text-center" id = "BPMhead">
+Current BPM 
+</label>
+</div>
+<div class = "col-sm-2 text-center">
+<label class = "text-center" id = "heartlabel">
+<i class = "fa fa-heart" style = "color:red;" id = "heart"></i>
+</label>
+</div>
+<div class = "col-sm-4">
+<label class = "text-center" id = "BPMbar">
+
+</label>
+</div>
+</div>
+
+</div>
+</div>
+<br>
+
+
+<div class = "sm-col-12 text-center" id = "patientbheader" style = "">
+<label id = "patientb">
+Patient B
+</label>
+</div>
+
+<div class = "row col-sm-12 text-center" id = "patientbdiv" style = "">
+<div class = "col-sm-6 text-white container-fluid text-center" >
+<header>
+BODY TEMPERATURE
+</header>
+
+<iframe class = "" id = "tempchart2" src = "">
+</iframe>
+<footer>
+<form onsubmit = "return formValidator3()">
+TEMPERATURE VALUES FROM <input type = "text" id = "tempstartdate2"></input> TO <input type = "text" id = "tempenddate2"></input>
+<button type = "submit" onclick = "return loadNewTempChart2()">CHANGE PERIOD</button>
+</form>
+</footer>
+<div class = "row text-center">
+<div class = "col-sm-6">
+<label class = " text-white text-center" id = "temphead">
+Current Body Temperature
+</label>
+</div>
+<div class = "col-sm-2">
+<label class = "text-center" id = "thermlabel">
+<i class = "fa fa-thermometer-half" style = "color:black;font-size:60px;" ></i>
+</label>
+</div>
+<div class = "col-sm-4">
+<label class = "text-center" id = "tempbar2">
+
+</label><br>
+</div>
+
+</div>
+</div>
+
+<div class = "col-sm-6 text-white container-fluid text-center">
+<header>
+BPM
+</header>
+
+<iframe class = "" src = "" id = "BPMchart2">
+</iframe>
+<footer>
+<form onsubmit = "return formValidator4()">
+BPM VALUES FROM <input type = "text" id = "BPMstartdate2"></input> TO <input type = "text" id = "BPMenddate2"></input>
+<button type = "submit" onclick = "return loadNewBPMChart2()">CHANGE PERIOD</button>
+</form>
+</footer>
+<div class  = "row text-center" id = "currentstatusdiv" >
+<div class = "col-sm-6">
+<label class = "text-center" id = "BPMhead">
+Current BPM 
+</label>
+</div>
+<div class = "col-sm-2 text-center">
+<label class = "text-center" id = "heartlabel">
+<i class = "fa fa-heart" style = "color:red;" id = "heart2"></i>
+</label>
+</div>
+<div class = "col-sm-4">
+<label class = "text-center" id = "BPMbar2">
+
+</label>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class = "sm-col-10 text-right">
+<button onclick = "return addPatient()" id = "addpatient">ADD PATIENT <i class="fa fa-plus" style = "color:green;width:50px;"></i></button>
+<button onclick = "return removePatient()" id = "removepatient">REMOVE PATIENT <i class="fa fa-minus" style = "color:red;width:50px;"></i></button>
+</div>
+
+
+</body>
+</html>

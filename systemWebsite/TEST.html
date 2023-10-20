@@ -1,0 +1,37 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <meta charset="utf-8">
+   <title>jQuery demo</title>
+ </head>
+ <body>
+<h2>Using the XMLHttpRequest object To Retrieve JSON Frame<BR>
+Plus Visualisation from Thingspeak</h2>
+<button type="button" onclick="loadXMLDoc()">Get Raw JSON</button>
+<button type = "button" onclick="displayData()">DISPLAY</button>
+<p id="json"></p>
+<p id="field1"></p>
+<script type = "text/javascript">
+function loadXMLDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+		var data = xhttp.responseText;
+		var dataObj = JSON.parse(data);
+		
+      document.getElementById("json").innerHTML = xhttp.responseText;
+	  document.getElementById("field1").innerHTML = dataObj.feeds[0].field1 + "</br>" + dataObj.feeds[0].field2;
+	 // document.getElementById("field1").innerHTML = dataObj.feeds[1].field2;
+    }
+  };
+  xhttp.open("GET","https://api.thingspeak.com/channels/9/feeds.json?results=120&average=60",true);
+  xhttp.send();
+}
+</script>
+
+<iframe width="500" height="380" style="border: 1px solid #cccccc;"
+src="http://api.thingspeak.com/apps/matlab_visualizations/41029"></iframe></br>
+
+ </body>`
+ </html>
+</html>
